@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	#it {
+		text-align: right;
+	}
+	.num {
+		width: 50px;
+	}
+	
+	#btn_call {
+		width: 120px;
+	}
+	table {
+		text-align : center;
+	}
+</style>
+<script type="text/javascript">
+function mycall(){
+	var obj_it = document.getElementById("it");
+	var str_tel = obj_it.value;
+	
+	alert("calling\n" + str_tel);
+}
+function myclick(obj){
+// 	var nums = document.getElementsByClassName("num");
+// 	var its = document.getElementById("it");
+	
+// 	var one = nums[0].value;
+// 	var two = nums[1].value;
+// 	var three = nums[2].value;
+// 	var four = nums[3].value;
+// 	var five = nums[4].value;
+// 	var six = nums[5].value;
+// 	var seven = nums[6].value;
+// 	var eight = nums[7].value;
+// 	var nine = nums[8].value;
+// 	var zero = nums[9].value;
+	
+	
+// 	it.value = its;
+// 	console.log(one);
+	var obj_it = document.getElementById("it");
+	
+	var str_new = obj.value;
+	var str_old = obj_it.value;
+	
+	obj_it.value = str_old + str_new;
+	
+}
+</script>
+</head>
+<body>
+JS07 HTML<br>
+<table border="1">
+	<tr>
+		<td colspan="3">
+			<input type="text" id="it">
+		</td>
+	</tr>
+	<tr>
+		<td><input type="button" class="num" value="1" onclick="myclick(this)"></td>
+		<td><input type="button" class="num" value="2" onclick="myclick(this)"></td>
+		<td><input type="button" class="num" value="3" onclick="myclick(this)"></td>
+	</tr>
+	<tr>
+		<td><input type="button" class="num" value="4" onclick="myclick(this)"></td>
+		<td><input type="button" class="num" value="5" onclick="myclick(this)"></td>
+		<td><input type="button" class="num" value="6" onclick="myclick(this)"></td>
+	</tr>
+	<tr>
+		<td><input type="button" class="num" value="7" onclick="myclick(this)"></td>
+		<td><input type="button" class="num" value="8" onclick="myclick(this)"></td>
+		<td><input type="button" class="num" value="9" onclick="myclick(this)"></td>
+	</tr>
+	<tr>
+		<td><input type="button" class="num" value="0" onclick="myclick(this)"></td>
+		<td colspan="2"><input type="button" id="btn_call" value="☎" onclick="mycall()"></td>
+	</tr>
+</table>
+<script type="text/javascript">
+	var obj_btn = document.getElementsByClassName("num");
+	obj_btn.addEventListner('click', function(){
+		myclick();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.7.1.js"></script>
+<style type="text/css">
+	.it {
+		width: 30px;
+	}
+</style>
+<script type="text/javascript">
+
+function myclick(){
+	var a = $(".it").eq(0).val();
+	var b = $(".it").eq(1).val();
+	
+	var aa = parseInt(a);
+	var bb = parseInt(b);
+	
+	var sum = aa + bb;
+	
+	$(".it").eq(2).val(sum);
+}
+
+$(document).ready(function(){
+	$("#btn").on('click', function(){
+		myclick();
+	});
+});
+</script>
+</head>
+<body>
+JS02 HTML<br>
+<input type="text" class="it" id="str">
++
+<input type="text" class="it" id="end">
+<input type="button" value="=" id="btn">
+<input type="text" class="it" id="sum">
+</body>
+</html>

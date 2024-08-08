@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#it{
+		width: 30px;
+	}
+	
+	#mydiv{
+		height: 200px;
+	}
+</style>
+<script type="text/javascript">
+
+function myclick(){
+	var inpt = document.getElementById("it").value;
+	var res = document.getElementById("mydiv");
+	
+	var dan = parseInt(inpt);
+	
+	for(var i = 1; i <= 9; i++) {
+		gugudan = dan + "x" + i + "=" + dan*i;
+		console.log(gugudan);
+		res.innerHTML += gugudan + "<br/>"; 
+	}
+}
+</script>
+</head>
+<body>
+JS04 HTML<br>
+<table border="1">
+	<tr>
+		<td>출력단수</td>
+		<td>
+			<input type="text" id="it">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="출력하기" onclick="myclick()">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<div id="mydiv"></div>
+		</td>
+	</tr>
+	
+</table>
+</body>
+</html>

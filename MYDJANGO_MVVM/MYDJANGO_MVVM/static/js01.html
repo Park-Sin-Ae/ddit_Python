@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// window.onload = function() {
+// 	let myButton = document.getElementById('btn');
+// 	myButton.onclick = function(event) {
+// 		let changeTxt = document.getElementById('mydiv');
+// 		changeTxt.textContent = "Good Evening";
+// 	}
+// }
+
+function myclick(){
+	var obj_div = document.getElementById('mydiv');
+	obj_div.innerHTML = "Good Evening";
+// 	obj_div.innerText = "Good Evening";
+}
+</script>
+</head>
+<body>
+JS01 HTML<br>
+<div id="mydiv">Good Morning</div>
+<!-- <input type="button" value="CLICK" id="btn"> -->
+<input type="button" value="CLICK" onclick="myclick()">
+</body>
+</html>

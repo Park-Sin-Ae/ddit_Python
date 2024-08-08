@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function fn_list(){
+	fetch('/emp_list.ajax', {
+		method: 'post',
+		body: JSON.stringify({
+			menu: "탕수육"
+		})
+	})
+	.then( res => res.json())
+	.then( res => {
+		var list = res.list;
+		var txt = "";
+		
+		for(var i=0;i<list.length;i++){
+			var e_id = list[i].e_id;
+			var e_name = list[i].e_name;
+			var gen = list[i].gen;
+			var addr = list[i].addr;
+			txt += `
+			<tr>
+				<td><a href="javascript:fn_one('${e_id}')">${e_id}</a></td>
+				<td>${e_name}</td>
+				<td>${gen}</td>
+				<td>${addr}</td>
+			</tr>
+			`;
+		}
+		
+		console.log(txt);
+		var obj_tbody = document.getElementById("my_tbody"); 
+		obj_tbody.innerHTML = txt;
+
+	})
+}
+
+function fn_one(e_id){
+	fetch('/emp_one.ajax', {
+		method: 'post',
+		body: JSON.stringify({
+			e_id: e_id
+		})
+	})
+	.then( res => res.json())
+	.then( res => {
+		var obj_e_id = document.getElementById("e_id"); 
+		var obj_e_name = document.getElementById("e_name"); 
+		var obj_gen = document.getElementById("gen"); 
+		var obj_addr = document.getElementById("addr"); 
+		
+		var vo = res.vo;
+		obj_e_id.value = vo.e_id;
+		obj_e_name.value = vo.e_name;
+		obj_gen.value = vo.gen;
+		obj_addr.value = vo.addr;
+	})
+}
+function fn_add(){
+	var obj_e_id = document.getElementById("e_id"); 
+	var obj_e_name = document.getElementById("e_name"); 
+	var obj_gen = document.getElementById("gen"); 
+	var obj_addr = document.getElementById("addr"); 
+	
+	
+	fetch('/emp_add.ajax', {
+		method: 'post',
+		body: JSON.stringify({
+			e_id: obj_e_id.value,
+			e_name: obj_e_name.value,
+			gen: obj_gen.value,
+			addr: obj_addr.value,
+		})
+	})
+	.then( res => res.json())
+	.then( res => {
+		var cnt = res.cnt;
+		if(cnt==1){
+			alert("정상적으로 추가되었습니다.");
+			fn_list();
+			obj_e_id.value = "";
+			obj_e_name.value = "";
+			obj_gen.value = "";
+			obj_addr.value = "";
+		}else{
+			alert("추가도중 문제가 생겼습니다.");
+		}
+	})
+
+}
+
+function fn_mod(){
+	var obj_e_id = document.getElementById("e_id"); 
+	var obj_e_name = document.getElementById("e_name"); 
+	var obj_gen = document.getElementById("gen"); 
+	var obj_addr = document.getElementById("addr"); 
+	
+	
+	fetch('/emp_mod.ajax', {
+		method: 'post',
+		body: JSON.stringify({
+			e_id: obj_e_id.value,
+			e_name: obj_e_name.value,
+			gen: obj_gen.value,
+			addr: obj_addr.value,
+		})
+	})
+	.then( res => res.json())
+	.then( res => {
+		var cnt = res.cnt;
+		if(cnt==1){
+			alert("정상적으로 수정되었습니다.");
+			fn_list();
+			obj_e_id.value = "";
+			obj_e_name.value = "";
+			obj_gen.value = "";
+			obj_addr.value = "";
+		}else{
+			alert("수정도중 문제가 생겼습니다.");
+		}
+	})
+
+}
+
+function fn_del(){
+	var obj_e_id = document.getElementById("e_id"); 
+	var obj_e_name = document.getElementById("e_name"); 
+	var obj_gen = document.getElementById("gen"); 
+	var obj_addr = document.getElementById("addr"); 
+	
+	
+	var flag = confirm("한번 지워진 데이터는 복구불가합니다.\n지우시렵니까?");
+	if(!flag){
+		return;
+	}
+	
+	fetch('/emp_del.ajax', {
+		method: 'post',
+		body: JSON.stringify({
+			e_id: obj_e_id.value
+		})
+	})
+	.then( res => res.json())
+	.then( res => {
+		var cnt = res.cnt;
+		if(cnt==1){
+			alert("정상적으로 삭제되었습니다.");
+			fn_list();
+			obj_e_id.value = "";
+			obj_e_name.value = "";
+			obj_gen.value = "";
+			obj_addr.value = "";
+		}else{
+			alert("삭제도중 문제가 생겼습니다.");
+		}
+	})
+
+}
+
+</script>
+</head>
+<body onload="fn_list()">
+EMP HTML<br>
+<table border="1px">
+	<thead>
+		<tr>
+			<td>사번</td>
+			<td>이름</td>
+			<td>성별</td>
+			<td>주소</td>
+		</tr>
+	</thead>
+	<tbody id="my_tbody">
+		<tr>
+			<td colspan="4">
+				데이터가 없습니다.
+			</td>
+		</tr>
+	<tbody>
+</table>
+
+<table border="1px">
+	<tr>
+		<td>사번</td>
+		<td>
+			<input type="text" id="e_id"/>
+		</td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td>
+			<input type="text" id="e_name"/>
+		</td>
+	</tr>
+	<tr>
+		<td>성별</td>
+		<td>
+			<input type="text" id="gen"/>
+		</td>
+	</tr>
+	<tr>
+		<td>주소</td>
+		<td>
+			<input type="text" id="addr"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="추가" id="btn_add" onclick="fn_add()" />
+			<input type="button" value="수정" id="btn_mod" onclick="fn_mod()" />
+			<input type="button" value="삭제" id="btn_del" onclick="fn_del()" />
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

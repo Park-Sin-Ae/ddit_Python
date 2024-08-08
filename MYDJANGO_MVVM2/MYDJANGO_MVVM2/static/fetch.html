@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function fn_fetch(){
+	// fetch
+	fetch('/fetch', {
+		method : 'post',
+		body: JSON.stringify({
+			menu: "탕수육"
+		})
+	})
+	.then(res => res.json())
+	.then(res => {
+		console.log(res);
+	})
+}
+
+
+</script>
+</head>
+<body>
+FETCH HTML <br>
+
+<a href="javascript:fn_fetch()">fetch</a>
+</body>
+</html>

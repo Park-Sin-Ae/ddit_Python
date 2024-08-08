@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#it_first, #it_last{
+		width: 65px;
+	}
+</style>
+<script type="text/javascript">
+
+function star(cnt) {
+	var ret = "";
+	for(var i = 0; i < cnt; i++){
+		ret += "*";
+	}
+	ret += "\n";
+	return ret;
+}
+
+function myclick(){
+	var obj_f = document.getElementById("it_first");
+	var obj_l = document.getElementById("it_last");
+	var obj_ta = document.getElementById("ta");
+	
+	var f = parseInt(obj_f.value);
+	var l = parseInt(obj_l.value);
+	
+	var txt = "";
+	
+	for(var i = f; i <= l; i++) {
+		txt += star(i);
+	}
+	
+	obj_ta.innerHTML = txt;
+}
+</script>
+</head>
+<body>
+JS06 HTML<br>
+<table border="1">
+	<tr>
+		<td>첫별수:</td>
+		<td>
+			<input type="text" id="it_first">
+		</td>
+	</tr>
+	<tr>
+		<td>끝별수:</td>
+		<td>
+			<input type="text" id="it_last">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="별그리기" onclick="myclick()">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<textarea id="ta" rows="20" cols="20"></textarea>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

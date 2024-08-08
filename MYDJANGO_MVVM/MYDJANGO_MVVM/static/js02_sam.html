@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.it {
+		width: 30px;
+	}
+</style>
+<script type="text/javascript">
+
+function myclick(){
+	var its = document.getElementsByClassName("it");
+	var a = its[0].value;
+	var b = its[1].value;
+	var aa = parseInt(a);
+	var bb = parseInt(b);
+	
+	var sum = aa + bb;
+	its[2].value = sum;
+}
+</script>
+</head>
+<body>
+JS02 HTML<br>
+<input type="text" class="it">
++
+<input type="text" class="it">
+<input type="button" value="=" id="btn" onclick="myclick()">
+<input type="text" class="it">
+<script type="text/javascript">
+var obj_btn = document.getElementById("btn");
+obj_btn.addEventListner('click', function(){
+	myclick();
+})
+</script>
+</body>
+</html>

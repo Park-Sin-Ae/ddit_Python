@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.it {
+		width: 30px;
+	}
+</style>
+<script type="text/javascript">
+
+function myclick(){
+	var str = document.getElementById("str").value;
+	var end = document.getElementById("end").value;
+	
+	var sum = parseInt(str) + parseInt(end);
+	document.getElementById("sum").value = sum;
+}
+</script>
+</head>
+<body>
+JS02 HTML<br>
+<input type="text" class="it" id="str">
++
+<input type="text" class="it" id="end">
+<input type="button" value="=" onclick="myclick()">
+<input type="text" class="it" id="sum">
+</body>
+</html>
